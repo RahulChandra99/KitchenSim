@@ -33,6 +33,12 @@ public class Player : MonoBehaviour
         Vector3 moveVector = new Vector3(inputVector.x, 0, inputVector.y);
         
         
-        transform.position += moveVector * (moveSpeed * Time.deltaTime); 
+        transform.position += moveVector * (moveSpeed * Time.deltaTime);
+
+        float rotationSpeed = 6f;
+        
+        //Slerp used for speherical smoothness and lerp used for position like smoothness
+        transform.forward = Vector3.Slerp(transform.forward, moveVector,rotationSpeed * Time.deltaTime);
+
     }
 }
